@@ -1,0 +1,167 @@
+/*  begin fonts  */
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/OpenSans.eot');
+  src: url('../fonts/OpenSans.eot?#iefix') format('embedded-opentype'), url('../fonts/OpenSans.woff') format('woff'), url('../fonts/OpenSans.ttf') format('truetype'), url('../fonts/OpenSans.svg#OpenSans') format('svg');
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/OpenSans-Light.eot');
+  src: url('../fonts/OpenSans-Light.eot?#iefix') format('embedded-opentype'), url('../fonts/OpenSans-Light.woff') format('woff'), url('../fonts/OpenSans-Light.ttf') format('truetype'), url('../fonts/OpenSans-Light.svg#OpenSans-Light') format('svg');
+  font-style: normal;
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/OpenSans-Semibold.eot');
+  src: url('../fonts/OpenSans-Semibold.eot?#iefix') format('embedded-opentype'), url('../fonts/OpenSans-Semibold.woff') format('woff'), url('../fonts/OpenSans-Semibold.ttf') format('truetype'), url('../fonts/OpenSans-Semibold.svg#OpenSans-Semibold') format('svg');
+  font-style: normal;
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/OpenSans-Bold.eot');
+  src: url('../fonts/OpenSans-Bold.eot?#iefix') format('embedded-opentype'), url('../fonts/OpenSans-Bold.woff') format('woff'), url('../fonts/OpenSans-Bold.ttf') format('truetype'), url('../fonts/OpenSans-Bold.svg#OpenSans-Bold') format('svg');
+  font-style: normal;
+  font-weight: 700;
+}
+/*  END fonts */
+/*  begin variables  */
+/*  END variables */
+/*  begin mixins  */
+/*  END mixins */
+body {
+  font-family: 'OpenSans', Arial, sans-serif;
+  font-weight: 400;
+}
+.container {
+  max-width: 1170px;
+  margin: auto;
+}
+header {
+  text-align: center;
+  color: #ffffff;
+  background-image: url(../img/header_bg.jpg);
+}
+header .container {
+  position: relative;
+  padding: 14.26% 0;
+}
+header p {
+  text-transform: uppercase;
+  font-size: 1.875em;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+.header-link {
+  position: absolute;
+  bottom: 25px;
+  right: 0;
+  color: #ffffff;
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: underline;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.header-link:hover {
+  text-decoration: none;
+}
+h1 {
+  font-weight: 700;
+  font-size: 5.625em;
+  margin: 0;
+  line-height: 1.2;
+}
+h1 span {
+  color: #e95749;
+}
+h2 {
+  margin: 0;
+  letter-spacing: 0.17em;
+  font-weight: 300;
+  font-size: 1.5em;
+  text-transform: uppercase;
+}
+.navbar {
+  padding: 26px 0;
+}
+.clearfix:after {
+  display: table;
+  width: 100%;
+  clear: both;
+}
+.logo {
+  display: inline-block;
+}
+nav {
+  display: inline-block;
+  float: right;
+  vertical-align: top;
+  font-weight: 600;
+}
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+nav ul li {
+  display: inline-block;
+  margin-left: 45px;
+  list-style: none;
+}
+nav ul li a {
+  display: block;
+  padding: 8px 0 30px;
+  color: #343434;
+  font-size: 1em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 2px solid #ffffff;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+nav ul li a:hover {
+  color: #e84c3d;
+}
+nav ul li a:active {
+  color: #e84c3d;
+  border-bottom-color: #e84c3d;
+}
+nav ul li a.active {
+  color: #e84c3d;
+  border-bottom-color: #e84c3d;
+}
+.first-slider {
+  margin: 85px 0 0;
+}
+.first-slider .slider {
+  display: inline-block;
+  width: 48.72%;
+}
+.first-slider .text {
+  display: inline-block;
+  float: right;
+  width: 48.72%;
+}
+.first-slider .text h4 {
+  margin: 0 0 22px;
+  font-size: 1.5em;
+  font-weight: 400;
+  color: #343434;
+}
+.first-slider .text p {
+  font-weight: 300;
+  font-size: 1em;
+  line-height: 1.5em;
+}
