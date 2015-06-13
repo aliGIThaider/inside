@@ -23,12 +23,16 @@ app.plugins = (function ($) {
 
 app.events = (function ($) {
     function init() {
-        competenciesBlocksHeight();
+        setEqualHeight($('.competencies-block'));
+        setEqualHeight($('.concept-block'));
+        konzept();
+        crewmanHover();
     }
 
-    function competenciesBlocksHeight() {
+    function setEqualHeight(elem) {
+        /* set equal height of elements. detect highest element and set this height to other elements */
         $(window).load(function() {
-            var block = $('.competencies-block');
+            var block = elem;
             if (block.length>0){
                 var maxHeight = 0;
                 block.each(function () {
@@ -39,7 +43,48 @@ app.events = (function ($) {
                 block.css('height', maxHeight);
             }
         });
-
+    }
+    function konzept() {
+        var conceptBlock = $('.concept-block');
+        $('.bulb-wrap').hover(
+            function () {
+                $('.concept-block:lt(2)').addClass('hover');
+            },
+            function () {
+                conceptBlock.removeClass('hover');
+            }
+        );
+        $('.konzept-wrap').hover(
+            function () {
+                conceptBlock.eq(2).addClass('hover');
+                conceptBlock.eq(3).addClass('hover');
+            },
+            function () {
+                conceptBlock.removeClass('hover');
+            }
+        );
+        $('.puzzle-wrap').hover(
+            function () {
+                conceptBlock.eq(4).addClass('hover');
+            },
+            function () {
+                conceptBlock.removeClass('hover');
+            }
+        );
+    }
+    function crewmanHover() {
+        var crewmanBlock = $('.crewman-block'),
+            $this,
+            index;
+        crewmanBlock.hover(
+            function () {
+                index = $(this).index() + 1;
+                crewmanBlock.not($('.crewman-block:nth-child('+ index +')')).addClass('light');
+            },
+            function () {
+                crewmanBlock.not($('.crewman-block:nth-child('+ index +')')).removeClass('light');
+            }
+        )
     }
 
 

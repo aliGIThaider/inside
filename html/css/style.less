@@ -38,6 +38,22 @@
 @gray-light: #d9d9d9;
 @border-light: #dddddd;
 @bg-lighter: #fdfdfd;
+@crewnam-text: #666666;
+
+@concept-1: #4a4a4a;
+@concept-1-hover: #e84c3d;
+@concept-2: #515151;
+@concept-2-hover: #fe5343;
+@concept-3: #5a5a5a;
+@concept-3-hover: lighten(@concept-2-hover, 4%);
+@concept-4: #676767;
+@concept-4-hover: lighten(@concept-2-hover, 7%);
+@concept-5: #757575;
+@concept-5-hover: lighten(@concept-2-hover, 11%);
+
+@concept-hover-duration: 0.4s;
+@crewman-hover-duration: 0.3s;
+
 /*  END variables */
 
 /*  begin mixins  */
@@ -212,7 +228,7 @@ h3 {
     .font-size(36, 16);
 }
 .sect-descrip {
-    margin: 35px 0 25px;
+    margin: 25px 0 25px;
     text-align: center;
     font-weight: 400;
     .font-size(16, 16);
@@ -275,15 +291,371 @@ h3 {
     background: @bg-light;
 }
 .concept-img {
+    position: relative;
+    height: 143px;
     margin: 28px 0 0 25px;
     text-align: center;
+    img {
+        -webkit-transition: all @concept-hover-duration ease;
+        -moz-transition: all @concept-hover-duration ease;
+        -ms-transition: all @concept-hover-duration ease;
+        -o-transition: all @concept-hover-duration ease;
+        transition: all @concept-hover-duration ease;
+    }
+    .arrow {
+        position: absolute;
+        left: 228px;
+        top: 5px;
+    }
+    .bulb-wrap {
+        position: absolute;
+        left: 164px;
+        top: 43px;
+        cursor: pointer;
+        .bulb {
+            position: absolute;
+            &.hover {
+                opacity: 0;
+            }
+        }
+        &:hover {
+            .bulb {
+                opacity: 0;
+                &.hover {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    .konzept-wrap {
+        position: absolute;
+        left: 492px;
+        top: 7px;
+        cursor: pointer;
+        .konzept {
+            position: absolute;
+            &.hover {
+                opacity: 0;
+            }
+        }
+        &:hover {
+            .konzept {
+                opacity: 0;
+                &.hover {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    .puzzle-wrap {
+        position: absolute;
+        left: 720px;
+        top: 0;
+        cursor: pointer;
+        .puzzle {
+            position: absolute;
+            &.hover {
+                opacity: 0;
+            }
+        }
+        &:hover {
+            .puzzle {
+                opacity: 0;
+                &.hover {
+                    opacity: 1;
+                }
+            }
+        }
+    }
 }
 
 .concept-blocks-wrap {
-    
+    position: relative;
+    margin: 35px 0 0;
+}
+.concept-block {
+    display: inline-block;
+    width: 16%;
+    box-sizing: border-box;
+    float: left;
+    vertical-align: top;
+    padding: 3px 8px 8px;
+    font-weight: 300;
+    color: @white;
+    -webkit-transition: all @concept-hover-duration ease;
+    -moz-transition: all @concept-hover-duration ease;
+    -ms-transition: all @concept-hover-duration ease;
+    -o-transition: all @concept-hover-duration ease;
+    transition: all @concept-hover-duration ease;
+    .line {
+        position: absolute;
+        height: 20px;
+        top: 0;
+        left: 0;
+        width: 100%;
+        -webkit-transition: all @concept-hover-duration ease;
+        -moz-transition: all @concept-hover-duration ease;
+        -ms-transition: all @concept-hover-duration ease;
+        -o-transition: all @concept-hover-duration ease;
+        transition: all @concept-hover-duration ease;
+        span {
+            position: absolute;
+            top: -7px;
+            right: -34px;
+            width: 0;
+            height: 0;
+            border-top: 18px solid transparent;
+            border-left: 32px solid @concept-1;
+            border-bottom: 18px solid transparent;
+            -webkit-transition: all @concept-hover-duration ease;
+            -moz-transition: all @concept-hover-duration ease;
+            -ms-transition: all @concept-hover-duration ease;
+            -o-transition: all @concept-hover-duration ease;
+            transition: all @concept-hover-duration ease;
+        }
+    }
+    .font-size(11,16);
+    .title {
+        width: 120%;
+        font-weight: 600;
+        margin: 0 0 0.4em;
+        text-transform: uppercase;
+    }
+    .text {
+
+    }
+    &:nth-child(1) {
+        background: @concept-1;
+        .line {
+            width: 81%;
+            left: 16%;
+            background: @concept-1;
+            span {
+                border-left: 34px solid @concept-1;
+
+            }
+        }
+    }
+    &:nth-child(2) {
+        background: @concept-2;
+        margin-top: 20px;
+        .line {
+            width: 62%;
+            left: 32%;
+            top: 20px;
+            background: @concept-2;
+            span {
+                border-left: 34px solid @concept-2;
+            }
+        }
+    }
+    &:nth-child(3) {
+        background: @concept-3;
+        margin-top: 40px;
+        .line {
+            width: 43%;
+            left: 48%;
+            top: 40px;
+            background: @concept-3;
+            span {
+                border-left: 34px solid @concept-3;
+            }
+        }
+    }
+    &:nth-child(4) {
+        background: @concept-4;
+        margin-top: 60px;
+        .line {
+            width: 24%;
+            left: 64%;
+            top: 60px;
+            background: @concept-4;
+            span {
+                border-left: 34px solid @concept-4;
+            }
+        }
+    }
+    &:nth-child(5) {
+        background: @concept-5;
+        margin-top: 80px;
+        .line {
+            width: 5.1%;
+            left: 79.9%;
+            top: 80px;
+            background: @concept-5;
+            span {
+                border-left: 34px solid @concept-5;
+            }
+        }
+    }
+    &.hover {
+        &:nth-child(1) {
+            background: @concept-1-hover;
+            .line {
+                background: @concept-1-hover;
+                span {
+                    border-left-color: @concept-1-hover;
+                }
+            }
+        }
+        &:nth-child(2) {
+            background: @concept-2-hover;
+            .line {
+                background: @concept-2-hover;
+                span {
+                    border-left-color: @concept-2-hover;
+                }
+            }
+        }
+        &:nth-child(3) {
+            background: @concept-3-hover;
+            .line {
+                background: @concept-3-hover;
+                span {
+                    border-left-color: @concept-3-hover;
+                }
+            }
+        }
+        &:nth-child(4) {
+            background: @concept-4-hover;
+            .line {
+                background: @concept-4-hover;
+                span {
+                    border-left-color: @concept-4-hover;
+                }
+            }
+        }
+        &:nth-child(5) {
+            background: @concept-5-hover;
+            .line {
+                background: @concept-5-hover;
+                span {
+                    border-left-color: @concept-5-hover;
+                }
+            }
+        }
+    }
 }
 
+.crewmans-wrap {
+    margin: 70px -2% 0;
+}
+.crewman-block {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 28.3%;
+    margin: 0 2.5%;
+    padding: 0 3.25%;
+    float: left;
+    text-decoration: none;
+    .photo-wrap {
+        display: block;
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        margin: 0 0 30px;
+        img {
+            display: inline-block;
+            vertical-align: top;
+            -webkit-transition: all @crewman-hover-duration ease;
+            -moz-transition: all @crewman-hover-duration ease;
+            -ms-transition: all @crewman-hover-duration ease;
+            -o-transition: all @crewman-hover-duration ease;
+            transition: all @crewman-hover-duration ease;
+        }
+        .bg {
+            position: absolute;
+            content: '';
+            z-index: 22;
+            opacity: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: rgba(220, 220, 220, 0.5);
+            -webkit-transition: all @crewman-hover-duration ease;
+            -moz-transition: all @crewman-hover-duration ease;
+            -ms-transition: all @crewman-hover-duration ease;
+            -o-transition: all @crewman-hover-duration ease;
+            transition: all @crewman-hover-duration ease;
+        }
+    }
+    .title {
+        display: block;
+        margin: 0 0 0.2em;
+        .font-size(20, 16);
+        color: @black;
+        font-weight: 600;
+        text-transform: uppercase;
+        text-align: center;
+    }
+    .subtitle {
+        display: block;
+        margin: 0 0 1.7em;
+        .font-size(13, 16);
+        color: @crewnam-text;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+        -webkit-transition: all @crewman-hover-duration ease;
+        -moz-transition: all @crewman-hover-duration ease;
+        -ms-transition: all @crewman-hover-duration ease;
+        -o-transition: all @crewman-hover-duration ease;
+        transition: all @crewman-hover-duration ease;
+    }
+    .section {
+        display: block;
+        margin: 0 0 1.2em;
+        color: @crewnam-text;
+        .font-size(13, 16);
+        line-height: 1.38;
+        -webkit-transition: all @crewman-hover-duration ease;
+        -moz-transition: all @crewman-hover-duration ease;
+        -ms-transition: all @crewman-hover-duration ease;
+        -o-transition: all @crewman-hover-duration ease;
+        transition: all @crewman-hover-duration ease;
+        i {
+            display: block;
+            font-style: normal;
+            text-transform: uppercase;
+        }
+    }
+    &:hover {
+        .subtitle {
+            color: @black;
+        }
+        .section {
+            color: @black;
+        }
+        .photo-wrap {
+            img {
+                -ms-transform: scale(1.15); /* IE 9 */
+                -webkit-transform: scale(1.15); /* Chrome, Safari, Opera */
+                transform: scale(1.15);
+            }
+        }
 
+    }
+    &.light {
+        .section {
+            color: lighten(@crewnam-text, 20%);
+        }
+        .photo-wrap {
+            .bg {
+               opacity: 1;
+            }
+        }
+    }
+}
 
-
-
+.contact-sect {
+    background: url(../img/contacts-bg.jpg) center center no-repeat;
+    h3 {
+        color: @white;
+    }
+    .sect-descrip {
+        color: @white;
+    }
+    .sect-title-line {
+        background: @white;
+    }
+}
