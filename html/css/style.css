@@ -588,6 +588,7 @@ h3 {
 }
 .contact-sect {
   background: url(../img/contacts-bg.jpg) center center no-repeat;
+  background-size: cover;
 }
 .contact-sect h3 {
   color: #ffffff;
@@ -728,4 +729,395 @@ textarea:focus:-ms-input-placeholder {
   padding: 25px 35px;
   color: #ffffff;
   background: rgba(245, 245, 245, 0.2);
+}
+.contact-info * {
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.contact-info .title {
+  margin: 0 0 1.5em;
+  font-size: 1.25em;
+  font-weight: 400;
+}
+.contact-info strong {
+  display: block;
+  margin: 0 0 1em;
+  font-weight: 600;
+  font-size: 1.25em;
+}
+.contact-info .icon {
+  position: absolute;
+  left: 0;
+}
+.contact-info .icon i {
+  display: block;
+  position: absolute;
+  background-image: url(../img/contacts-sprite.png);
+  background-repeat: no-repeat;
+}
+.contact-info .icon i.hover {
+  opacity: 0;
+}
+.contact-info .icon i.active {
+  opacity: 0;
+}
+.contact-info address {
+  position: relative;
+  padding: 0 0 0 42px;
+  font-size: 1em;
+  font-weight: 300;
+  font-style: normal;
+}
+.contact-info address .icon i {
+  background-position: 0 0;
+  width: 23px;
+  height: 31px;
+}
+.contact-info .email {
+  position: relative;
+  padding: 0 0 0 42px;
+  margin: 1.2em 0;
+  font-size: 1em;
+  font-weight: 300;
+  cursor: pointer;
+}
+.contact-info .email a {
+  color: #ffffff;
+  text-decoration: none;
+}
+.contact-info .email .icon {
+  top: 2px;
+}
+.contact-info .email .icon i {
+  background-position: -23px 0;
+  width: 25px;
+  height: 16px;
+}
+.contact-info .email .icon i.hover {
+  background-position: -73px 0;
+  width: 25px;
+  height: 16px;
+}
+.contact-info .email .icon i.active {
+  background-position: -48px 0;
+  width: 25px;
+  height: 16px;
+}
+.contact-info .email:hover {
+  color: #e84c3d;
+  text-decoration: underline;
+}
+.contact-info .email:hover a {
+  color: #e84c3d;
+}
+.contact-info .email:hover .icon i {
+  opacity: 0;
+}
+.contact-info .email:hover .icon i.hover {
+  opacity: 1;
+}
+.contact-info .email:active {
+  color: #757575;
+  text-decoration: underline;
+}
+.contact-info .email:active a {
+  color: #757575;
+}
+.contact-info .email:active .icon i {
+  opacity: 0;
+}
+.contact-info .email:active .icon i.active {
+  opacity: 1;
+}
+.contact-info .phone {
+  position: relative;
+  padding: 0 0 0 42px;
+  font-size: 1em;
+  font-weight: 300;
+  cursor: pointer;
+}
+.contact-info .phone a {
+  color: #ffffff;
+  text-decoration: none;
+}
+.contact-info .phone .icon {
+  top: -5px;
+  left: 2px;
+}
+.contact-info .phone .icon i {
+  background-position: -98px 0;
+  width: 20px;
+  height: 31px;
+}
+.contact-info .phone .icon i.hover {
+  background-position: -138px 0;
+  width: 20px;
+  height: 31px;
+}
+.contact-info .phone .icon i.active {
+  background-position: -118px 0;
+  width: 20px;
+  height: 31px;
+}
+.contact-info .phone:hover {
+  color: #e84c3d;
+  text-decoration: underline;
+}
+.contact-info .phone:hover a {
+  color: #e84c3d;
+}
+.contact-info .phone:hover .icon i {
+  opacity: 0;
+}
+.contact-info .phone:hover .icon i.hover {
+  opacity: 1;
+}
+.contact-info .phone:active {
+  color: #757575;
+  text-decoration: underline;
+}
+.contact-info .phone:active a {
+  color: #757575;
+}
+.contact-info .phone:active .icon i {
+  opacity: 0;
+}
+.contact-info .phone:active .icon i.active {
+  opacity: 1;
+}
+.contacts-link {
+  display: inline-block;
+  margin: 25px 0 0;
+  font-size: 1em;
+  line-height: 1.5;
+  float: right;
+  text-align: right;
+  color: #ffffff;
+  text-decoration: underline;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.contacts-link:hover {
+  color: #e84c3d;
+}
+.contacts-link:active {
+  color: #757575;
+}
+footer {
+  padding: 60px 0 30px;
+  background: #343434;
+}
+.footer-block {
+  display: inline-block;
+  width: 18%;
+  margin: 0 0 0 2.13%;
+  vertical-align: top;
+  font-weight: 300;
+  color: #ffffff;
+  font-size: 0.8125em;
+}
+.footer-block:first-child {
+  margin-left: 0;
+}
+.footer-block h6 {
+  margin: 0 0 0.25em;
+  text-transform: uppercase;
+  font-size: 1.2307692307692308em;
+  font-weight: 300;
+}
+.footer-social {
+  text-align: center;
+  margin: 30px 0 20px;
+}
+.footer-social a {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 17px;
+}
+.footer-social a i {
+  display: block;
+  position: absolute;
+  background-image: url(../img/social.png);
+  background-repeat: no-repeat;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.footer-social a i.hover {
+  opacity: 0;
+}
+.footer-social a i.active {
+  opacity: 0;
+}
+.footer-social a:hover i {
+  opacity: 0;
+}
+.footer-social a:hover i.hover {
+  opacity: 1;
+}
+.footer-social a:active i {
+  opacity: 0;
+}
+.footer-social a:active i.hover {
+  opacity: 0;
+}
+.footer-social a:active i.active {
+  opacity: 1;
+}
+.footer-social .fb {
+  width: 7px;
+  height: 13px;
+}
+.footer-social .fb i {
+  background-position: -39px 0;
+  width: 7px;
+  height: 13px;
+}
+.footer-social .fb i.hover {
+  background-position: -53px 0;
+  width: 7px;
+  height: 13px;
+}
+.footer-social .fb i.active {
+  background-position: -46px 0;
+  width: 7px;
+  height: 13px;
+}
+.footer-social .tweet {
+  width: 13px;
+  height: 11px;
+}
+.footer-social .tweet i {
+  background-position: -141px 0;
+  width: 13px;
+  height: 11px;
+}
+.footer-social .tweet i.hover {
+  background-position: -167px 0;
+  width: 13px;
+  height: 11px;
+}
+.footer-social .tweet i.active {
+  background-position: -154px 0;
+  width: 13px;
+  height: 11px;
+}
+.footer-social .dribble {
+  width: 13px;
+  height: 14px;
+}
+.footer-social .dribble i {
+  background-position: 0 0;
+  width: 13px;
+  height: 14px;
+}
+.footer-social .dribble i.hover {
+  background-position: -26px 0;
+  width: 13px;
+  height: 14px;
+}
+.footer-social .dribble i.active {
+  background-position: -13px 0;
+  width: 13px;
+  height: 14px;
+}
+.footer-social .linkedin {
+  width: 13px;
+  height: 12px;
+}
+.footer-social .linkedin i {
+  background-position: -102px 0;
+  width: 13px;
+  height: 12px;
+}
+.footer-social .linkedin i.hover {
+  background-position: -128px 0;
+  width: 13px;
+  height: 12px;
+}
+.footer-social .linkedin i.active {
+  background-position: -115px 0;
+  width: 13px;
+  height: 12px;
+}
+.footer-social .g-plus {
+  width: 14px;
+  height: 13px;
+}
+.footer-social .g-plus i {
+  background-position: -60px 0;
+  width: 14px;
+  height: 13px;
+}
+.footer-social .g-plus i.hover {
+  background-position: -88px 0;
+  width: 14px;
+  height: 13px;
+}
+.footer-social .g-plus i.active {
+  background-position: -74px 0;
+  width: 14px;
+  height: 13px;
+}
+.copyright {
+  margin: 0 0 20px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 0.8125em;
+  font-weight: 400;
+}
+.scrollTop {
+  display: block;
+  margin: auto;
+  width: 46px;
+  height: 46px;
+}
+.scrollTop i {
+  display: block;
+  position: absolute;
+  background-image: url(../img/scrollTop.png);
+  background-repeat: no-repeat;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  background-position: 0 0;
+  width: 46px;
+  height: 46px;
+}
+.scrollTop i.hover {
+  opacity: 0;
+  background-position: -92px 0;
+  width: 46px;
+  height: 46px;
+}
+.scrollTop i.active {
+  opacity: 0;
+  background-position: -46px 0;
+  width: 46px;
+  height: 46px;
+}
+.scrollTop:hover i {
+  opacity: 0;
+}
+.scrollTop:hover i.hover {
+  opacity: 1;
+}
+.scrollTop:active i {
+  opacity: 0;
+}
+.scrollTop:active i.hover {
+  opacity: 0;
+}
+.scrollTop:active i.active {
+  opacity: 1;
 }

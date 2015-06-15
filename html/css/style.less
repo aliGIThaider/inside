@@ -44,6 +44,9 @@
 @input-color: #787878;
 @send-btn: #e84c3d;
 @send-btn-active: #757575;
+@contacts-hover: #e84c3d;
+@contacts-active: #757575;
+
 
 @concept-1: #4a4a4a;
 @concept-1-hover: #e84c3d;
@@ -58,7 +61,9 @@
 
 @concept-hover-duration: 0.4s;
 @crewman-hover-duration: 0.3s;
-
+@contacts-hover-duration: 0.2s;
+@social-hover-duration: 0.3s;
+@scrollTop-hover-duration: 0.3s;
 /*  END variables */
 
 /*  begin mixins  */
@@ -654,6 +659,7 @@ h3 {
 
 .contact-sect {
     background: url(../img/contacts-bg.jpg) center center no-repeat;
+    background-size: cover;
     h3 {
         color: @white;
     }
@@ -787,6 +793,12 @@ textarea:focus:-ms-input-placeholder {
         background: @send-btn-active;
     }
 }
+
+.stitches-social(@x: 0, @y: 0, @width: 0, @height: 0) {
+    background-position: @x @y;
+    width: @width;
+    height: @height;
+}
 .contact-info {
     display: inline-block;
     float: right;
@@ -795,4 +807,377 @@ textarea:focus:-ms-input-placeholder {
     padding: 25px 35px;
     color: @white;
     background: rgba(245, 245, 245, 0.2);
+    * {
+        -webkit-transition: all @contacts-hover-duration ease;
+        -moz-transition: all @contacts-hover-duration ease;
+        -ms-transition: all @contacts-hover-duration ease;
+        -o-transition: all @contacts-hover-duration ease;
+        transition: all @contacts-hover-duration ease;
+    }
+    .title {
+        margin: 0 0 1.5em;
+        .font-size(20, 16);
+        font-weight: 400;
+    }
+    strong {
+        display: block;
+        margin: 0 0 1em;
+        font-weight: 600;
+        .font-size(20, 16);
+    }
+    .icon {
+        position: absolute;
+        left: 0;
+        i {
+            display: block;
+            position: absolute;
+            background-image: url(../img/contacts-sprite.png);
+            background-repeat: no-repeat;
+            &.hover {
+                opacity: 0;
+            }
+            &.active {
+                opacity: 0;
+            }
+        }
+    }
+    address {
+        position: relative;
+        padding: 0 0 0 42px;
+        .font-size(16, 16);
+        font-weight: 300;
+        font-style: normal;
+        .icon {
+            i {
+                .stitches-social(0, 0, 23px, 31px);
+            }
+        }
+    }
+    .email {
+        position: relative;
+        padding: 0 0 0 42px;
+        margin: 1.2em 0;
+        .font-size(16, 16);
+        font-weight: 300;
+        cursor: pointer;
+        a {
+            color: @white;
+            text-decoration: none;
+        }
+        .icon {
+            top: 2px;
+            i {
+                .stitches-social(-23px, 0, 25px, 16px);
+                &.hover {
+                    .stitches-social(-73px, 0, 25px, 16px);
+                }
+                &.active {
+                    .stitches-social(-48px, 0, 25px, 16px);
+                }
+            }
+        }
+        &:hover {
+            color: @contacts-hover;
+            text-decoration: underline;
+            a {
+                color: @contacts-hover;
+            }
+            .icon {
+                i {
+                    opacity: 0;
+                    &.hover {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+        &:active {
+            color: @contacts-active;
+            text-decoration: underline;
+            a {
+                color: @contacts-active;
+            }
+            .icon {
+                i {
+                    opacity: 0;
+                    &.active {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+    .phone {
+        position: relative;
+        padding: 0 0 0 42px;
+        .font-size(16, 16);
+        font-weight: 300;
+        cursor: pointer;
+        a {
+            color: @white;
+            text-decoration: none;
+        }
+        .icon {
+            top: -5px;
+            left: 2px;
+            i {
+                .stitches-social(-98px, 0, 20px, 31px);
+                &.hover {
+                    .stitches-social(-138px, 0, 20px, 31px);
+                }
+                &.active {
+                    .stitches-social(-118px, 0, 20px, 31px);
+                }
+            }
+        }
+        &:hover {
+            color: @contacts-hover;
+            text-decoration: underline;
+            a {
+                color: @contacts-hover;
+            }
+            .icon {
+                i {
+                    opacity: 0;
+                    &.hover {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+        &:active {
+            color: @contacts-active;
+            text-decoration: underline;
+            a {
+                color: @contacts-active;
+            }
+            .icon {
+                i {
+                    opacity: 0;
+                    &.active {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}
+.contacts-link {
+    display: inline-block;
+    margin: 25px 0 0;
+    .font-size(16, 16);
+    line-height: 1.5;
+    float: right;
+    text-align: right;
+    color: @white;
+    text-decoration: underline;
+    -webkit-transition: all @contacts-hover-duration ease;
+    -moz-transition: all @contacts-hover-duration ease;
+    -ms-transition: all @contacts-hover-duration ease;
+    -o-transition: all @contacts-hover-duration ease;
+    transition: all @contacts-hover-duration ease;
+    &:hover {
+        color: @contacts-hover;
+    }
+    &:active {
+        color: @contacts-active;
+    }
+}
+
+footer {
+    padding: 60px 0 30px;
+    background: @black;
+}
+.footer-block {
+    display: inline-block;
+    width: 18%;
+    margin: 0 0 0 2.13%;
+    vertical-align: top;
+    font-weight: 300;
+    color: @white;
+    .font-size(13, 16);
+    &:first-child {
+        margin-left: 0;
+    }
+    h6 {
+        margin: 0 0 0.25em;
+        text-transform: uppercase;
+        .font-size(16, 13);
+        font-weight: 300;
+    }
+}
+
+.stitches-soc(@x: 0, @y: 0, @width: 0, @height: 0) {
+    background-position: @x @y;
+    width: @width;
+    height: @height;
+}
+.footer-social {
+    text-align: center;
+    margin: 30px 0 20px;
+    a {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 17px;
+        i {
+            display: block;
+            position: absolute;
+            background-image: url(../img/social.png);
+            background-repeat: no-repeat;
+            -webkit-transition: all @social-hover-duration ease;
+            -moz-transition: all @social-hover-duration ease;
+            -ms-transition: all @social-hover-duration ease;
+            -o-transition: all @social-hover-duration ease;
+            transition: all @social-hover-duration ease;
+            &.hover {
+                opacity: 0;
+            }
+            &.active {
+                opacity: 0;
+            }
+        }
+        &:hover {
+            i {
+                opacity: 0;
+                &.hover {
+                    opacity: 1;
+                }
+            }
+        }
+        &:active {
+            i {
+                opacity: 0;
+                &.hover {
+                    opacity: 0;
+                }
+                &.active {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    .fb {
+        width: 7px;
+        height: 13px;
+        i {
+            .stitches-soc(-39px, 0, 7px, 13px);
+            &.hover {
+                .stitches-soc(-53px, 0, 7px, 13px);
+            }
+            &.active {
+                .stitches-soc(-46px, 0, 7px, 13px);
+            }
+        }
+    }
+    .tweet {
+        width: 13px;
+        height: 11px;
+        i {
+            .stitches-soc(-141px, 0, 13px, 11px);
+            &.hover {
+                .stitches-soc(-167px, 0, 13px, 11px);
+            }
+            &.active {
+                .stitches-soc(-154px, 0, 13px, 11px);
+            }
+        }
+    }
+    .dribble {
+        width: 13px;
+        height: 14px;
+        i {
+            .stitches-soc(0, 0, 13px, 14px);
+            &.hover {
+                .stitches-soc(-26px, 0, 13px, 14px);
+            }
+            &.active {
+                .stitches-soc(-13px, 0, 13px, 14px);
+            }
+        }
+    }
+    .linkedin {
+        width: 13px;
+        height: 12px;
+        i {
+            .stitches-soc(-102px, 0, 13px, 12px);
+            &.hover {
+                .stitches-soc(-128px, 0, 13px, 12px);
+            }
+            &.active {
+                .stitches-soc(-115px, 0, 13px, 12px);
+            }
+        }
+    }
+    .g-plus {
+        width: 14px;
+        height: 13px;
+        i {
+            .stitches-soc(-60px, 0, 14px, 13px);
+            &.hover {
+                .stitches-soc(-88px, 0, 14px, 13px);
+            }
+            &.active {
+                .stitches-soc(-74px, 0, 14px, 13px);
+            }
+        }
+    }
+}
+
+.copyright {
+    margin: 0 0 20px;
+    text-align: center;
+    color: @white;
+    .font-size(13, 16);
+    font-weight: 400;
+}
+
+.stitches-scrollTop(@x: 0, @y: 0, @width: 0, @height: 0) {
+    background-position: @x @y;
+    width: @width;
+    height: @height;
+}
+.scrollTop {
+    display: block;
+    margin: auto;
+    width: 46px;
+    height: 46px;
+    i {
+        display: block;
+        position: absolute;
+        background-image: url(../img/scrollTop.png);
+        background-repeat: no-repeat;
+        -webkit-transition: all @scrollTop-hover-duration ease;
+        -moz-transition: all @scrollTop-hover-duration ease;
+        -ms-transition: all @scrollTop-hover-duration ease;
+        -o-transition: all @scrollTop-hover-duration ease;
+        transition: all @scrollTop-hover-duration ease;
+        .stitches-scrollTop(0, 0, 46px, 46px);
+        &.hover {
+            opacity: 0;
+            .stitches-scrollTop(-92px, 0, 46px, 46px);
+        }
+        &.active {
+            opacity: 0;
+            .stitches-scrollTop(-46px, 0, 46px, 46px);
+        }
+    }
+    &:hover {
+        i {
+            opacity: 0;
+            &.hover {
+                opacity: 1;
+            }
+        }
+    }
+    &:active {
+        i {
+            opacity: 0;
+            &.hover {
+                opacity: 0;
+            }
+            &.active {
+                opacity: 1;
+            }
+        }
+    }
 }
