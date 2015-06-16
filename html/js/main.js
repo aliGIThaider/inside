@@ -24,7 +24,7 @@ app.plugins = (function ($) {
 app.events = (function ($) {
     function init() {
         setEqualHeight($('.competencies-block'));
-        setEqualHeight($('.concept-block'));
+        //setEqualHeight($('.concept-block'));
         konzept();
         crewmanHover();
     }
@@ -32,20 +32,68 @@ app.events = (function ($) {
     function setEqualHeight(elem) {
         /* set equal height of elements. detect highest element and set this height to other elements */
         $(window).load(function() {
-            var block = elem;
-            if (block.length>0){
-                var maxHeight = 0;
-                block.each(function () {
-                    if ($(this).outerHeight()>maxHeight){
-                        maxHeight = $(this).outerHeight();
-                    }
-                });
-                block.css('height', maxHeight);
+            if ($(window).width() > 640){
+                var block = elem;
+                if (block.length>0){
+                    var maxHeight = 0;
+                    block.each(function () {
+                        if ($(this).outerHeight()>maxHeight){
+                            maxHeight = $(this).outerHeight();
+                        }
+                    });
+                    block.css('height', maxHeight);
+                }
             }
         });
+        $(window).resize(function () {
+            if ($(window).width() > 640){
+                var block = elem;
+                if (block.length>0){
+                    var maxHeight = 0;
+                    block.each(function () {
+                        if ($(this).outerHeight()>maxHeight){
+                            maxHeight = $(this).outerHeight();
+                        }
+                    });
+                    block.css('height', maxHeight);
+                }
+            }
+        })
     }
     function konzept() {
-        var conceptBlock = $('.concept-block');
+        var conceptBlock = $('.concept-block'),
+            maxHeight;
+        function setHeightAndLines() {
+            $(window).load(function() {
+                if (conceptBlock.length>0){
+                    maxHeight = 0;
+                    conceptBlock.each(function () {
+                        if ($(this).outerHeight()>maxHeight){
+                            maxHeight = $(this).outerHeight();
+                        }
+                    });
+                    conceptBlock.css('height', maxHeight);
+                }
+                if ($(window).width() < 769 ){
+                    var concBlockHeight = maxHeight;
+                    $('.concept-block:nth-child(4) .line').css('top', (concBlockHeight + 55) + 'px');
+                    $('.concept-block:nth-child(5) .line').css('top', (concBlockHeight + 75) + 'px');
+                }
+                if ($(window).width() < 641 ){
+                    var concBlockHeight = maxHeight;
+                    $('.concept-block:nth-child(4) .line').css('top', (concBlockHeight + 55) + 'px');
+                    $('.concept-block:nth-child(5) .line').css('top', (concBlockHeight + 75) + 'px');
+                }
+            }
+        )}
+        setHeightAndLines();
+        $(window).resize(function () {
+            setHeightAndLines();
+        });
+
+
+
+
         $('.bulb-wrap').hover(
             function () {
                 $('.concept-block:lt(2)').addClass('hover');
@@ -72,6 +120,7 @@ app.events = (function ($) {
             }
         );
     }
+
     function crewmanHover() {
         var crewmanBlock = $('.crewman-block'),
             $this,
