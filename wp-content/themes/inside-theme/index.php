@@ -265,13 +265,7 @@
 			<div class="clear"></div>
 			<div class="contact-wrap clearfix">
 				<div class="contact-form animated">
-					<form action="#">
-						<input type="text" class="input input-name" placeholder="Your name"/>
-						<input type="text" class="input input-phone" placeholder="Telefon:"/>
-						<input type="text" class="input input-email" placeholder="E-mail:"/>
-						<textarea name="message" id="message" cols="30" rows="4" class="input input-message" placeholder="Your message..."></textarea>
-						<button class="btn-send">SEND</button>
-					</form>
+					<?php echo do_shortcode( '[contact-form-7 id="149" title="Kontakt"]' ); ?>
 				</div>
 				<div class="contact-info animated">
 					<?php $contactInfoTitle = get_field('contacts_info_title', 40); ?>

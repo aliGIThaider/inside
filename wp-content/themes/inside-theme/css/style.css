@@ -689,6 +689,8 @@ textarea:focus:-ms-input-placeholder {
 .input {
   box-sizing: border-box;
   height: 50px;
+  display: block;
+  width: 100%;
   padding: 15px 12px;
   margin: 0 0 30px;
   font-size: 1em;
@@ -712,11 +714,11 @@ textarea:focus:-ms-input-placeholder {
   border-color: #e84c3d;
   color: #ffffff;
 }
-.input-name {
+.wpcf7-form span.name {
   width: 47.37%;
   float: left;
 }
-.input-phone {
+.wpcf7-form span.phone {
   width: 47.37%;
   float: right;
 }
@@ -1246,6 +1248,7 @@ footer {
 .swiper-slide.posrel .logo-mittel {
   position: absolute;
   display: inline-block;
+  z-index: 55;
   bottom: 22px;
   right: 180px;
   width: 42px;
@@ -1261,6 +1264,7 @@ footer {
 }
 .swiper-slide.posrel .dienstle {
   position: absolute;
+  z-index: 55;
   display: inline-block;
   color: #2f2f2f;
   right: 24px;
@@ -1290,6 +1294,48 @@ footer {
   opacity: 1;
 }
 /* END  competenzen page */
+.wpcf7-form-control-wrap {
+  display: block;
+}
+.wpcf7-form p br {
+  display: none;
+}
+span.wpcf7-not-valid-tip {
+  position: absolute;
+  bottom: 8px;
+  font-size: 0.85em;
+  color: #e84c3d;
+}
+.wpcf7-form-control-wrap.email {
+  clear: both;
+  float: left;
+  width: 100%;
+}
+.wpcf7-form-control-wrap.message {
+  clear: both;
+  float: left;
+  width: 100%;
+}
+div.wpcf7-validation-errors {
+  position: absolute;
+  border: none;
+  color: #e84c3d;
+  bottom: -25px;
+  padding: 0;
+}
+div.wpcf7-mail-sent-ok {
+  position: absolute;
+  border: none;
+  color: #ffffff;
+  bottom: -25px;
+  padding: 0;
+}
+.contact-form div.wpcf {
+  margin-top: -14px !important;
+}
+#wpcf7-f149-o1 {
+  margin-top: -14px !important;
+}
 /****  media  ****/
 @media (max-width: 1280px) {
   .container {
@@ -1461,6 +1507,9 @@ footer {
     float: none;
     width: 85%;
     margin: auto;
+  }
+  div.wpcf7-validation-errors {
+    bottom: -40px;
   }
   .btn-send {
     display: block;
@@ -1654,10 +1703,9 @@ footer {
   .input {
     margin: 0 0 40px;
   }
-  .input-name,
-  .input-phone {
+  .wpcf7-form span.name,
+  .wpcf7-form span.phone {
     width: 100%;
-    float: none;
   }
 }
 @media (max-width: 440px) {
