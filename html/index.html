@@ -6,35 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
     <link rel="stylesheet" href="css/normalize.css"/>
     <link rel="stylesheet" href="css/swiper.css"/>
+    <link rel="stylesheet" href="css/animate.css"/>
 	<link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
 <div class="wrapper">
-    <header>
+    <header id="header">
         <div class="container">
-            <p><strong>UNIQUE</strong> AND <strong>CREATIVE</strong> soft</p>
-            <h1>WELCOME TO <span>INSIDE</span></h1>
-            <h2>we are the Software development COMPANY </h2>
+            <p class="animated"><strong>UNIQUE</strong> AND <strong>CREATIVE</strong> soft</p>
+            <h1 class="animated">WELCOME TO <span>INSIDE</span></h1>
+            <h2 class="animated">we are the Software development COMPANY </h2>
             <a href="#" class="header-link">Impressum</a>
         </div>
     </header>
-    <div class="navbar">
+    <div class="navbar animated">
         <div class="container clearfix">
             <a href="#" class="logo"><img src="img/logo.png" alt=""/></a>
             <nav>
                 <ul>
-                    <li><a href="#" class="active">Startseite</a></li>
-                    <li><a href="#">Kompetenzen</a></li>
-                    <li><a href="#">Konzept</a></li>
-                    <li><a href="#">Über Uns</a></li>
-                    <li><a href="#">Kontakt</a></li>
+                    <li><a href="#" class="scrollto">Startseite</a></li>
+                    <li><a href="#kompetenzen" class="scrollto">Kompetenzen</a></li>
+                    <li><a href="#konzept" class="scrollto">Konzept</a></li>
+                    <li><a href="#uber-uns" class="scrollto">Über Uns</a></li>
+                    <li><a href="#kontakt" class="scrollto">Kontakt</a></li>
                 </ul>
             </nav>
         </div>
     </div>
 
     <section class="first-slider-sect">
-        <div class="container clearfix">
+        <div class="container clearfix animated">
             <div class="slider">
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
@@ -68,14 +69,14 @@
         </div>
     </section>
 
-    <section class="competencies-sect">
+    <section class="competencies-sect" id="kompetenzen">
         <div class="container">
-            <h3>Kompetenzen</h3>
-            <p class="sect-descrip">Unsere Partner und unser Industrie 4.0 Konzept stellen sich vor.: <br/>
+            <h3 class="animated">Kompetenzen</h3>
+            <p class="animated sect-descrip">Unsere Partner und unser Industrie 4.0 Konzept stellen sich vor.: <br/>
                 Zusammen mit unseren leistungsstarken Partnern konzentrieren wir uns auf die Realisierung Ihrer Idee; dass ist was wir unter „gemeinsam Erfolgreich“ verstehen</p>
-            <span class="sect-title-line"></span>
+            <span class="animated sect-title-line"></span>
             <div class="competencies-block-wrap clearfix">
-                <a href="#" class="competencies-block">
+                <a href="#" class="competencies-block animated left">
                     <span class="title">MRT-Kompetenzzentrum</span>
                     <img src="img/compet-1.png" alt=""/>
                     <span>
@@ -85,7 +86,7 @@
                         Haben Sie Bedarf an medizinischen Businessprozessen oder Fachprodukten. Können wir auf Wunsch diesen Partner hinzuziehen
                     </span>
                 </a>
-                <a href="#" class="competencies-block">
+                <a href="#" class="competencies-block animated left">
                     <span class="title">SK-Games</span>
                     <img src="img/compet-2.png" alt=""/>
                     <span>
@@ -95,7 +96,7 @@
                         Sie haben eine interessante Spieleidee und wollen diese entwickeln lassen, wir können die Markttauglichkeit von SK-Games prüfen lassen.
                     </span>
                 </a>
-                <a href="#" class="competencies-block">
+                <a href="#" class="competencies-block animated right">
                     <span class="title">ConnectionPoint</span>
                     <img src="img/compet-3.png" alt=""/>
                     <span>
@@ -106,7 +107,7 @@ Profitieren Sie von der Möglichkeit das fertige Konzept zu günstigen Preisen i
                         Osteuropa programmieren zu lassen. Die deutschen Ingenieure in beiden Unternehmen garantieren Ihnen gleichbleibende Qualität bei optimalen Kosten. Grafische Lösungen können über diesem Partner ebenfalls günstig angeboten werden.
                     </span>
                 </a>
-                <a href="#" class="competencies-block">
+                <a href="#" class="competencies-block animated right">
                     <span class="title">Industrie 4.0</span>
                     <img src="img/compet-4.png" alt=""/>
                     <span>
@@ -125,13 +126,13 @@ Profitieren Sie von der Möglichkeit das fertige Konzept zu günstigen Preisen i
         </div>
     </section>
 
-    <section class="concept-sect">
+    <section class="concept-sect" id="konzept">
         <div class="container">
-            <h3>Konzept</h3>
-            <p class="sect-descrip">Unser Konzept ist: „keep it simple“. Geschäftsmodell dies spiegelt sich auch in unseren Prozessen wieder, erfolgreich zu sein.</p>
-            <span class="sect-title-line"></span>
+            <h3 class="animated">Konzept</h3>
+            <p class="animated sect-descrip">Unser Konzept ist: „keep it simple“. Geschäftsmodell dies spiegelt sich auch in unseren Prozessen wieder, erfolgreich zu sein.</p>
+            <span class=" animated sect-title-line"></span>
 
-            <div class="concept-img">
+            <div class="concept-img animated">
                 <!--<img src="img/concept-img-desktop.png" alt="" class="desktop"/>-->
                 <!--<img src="img/concept-img-mobile.png" alt="" class="mobile"/>-->
                 <div class="bulb-wrap">
@@ -153,7 +154,7 @@ Profitieren Sie von der Möglichkeit das fertige Konzept zu günstigen Preisen i
                 </div>
             </div>
 
-            <div class="concept-blocks-wrap clearfix">
+            <div class="concept-blocks-wrap clearfix animated">
                 <div class="concept-block">
                     <div class="line"><span></span></div>
                     <p class="title">Vor dem Spiel:</p>
@@ -216,17 +217,17 @@ Profitieren Sie von der Möglichkeit das fertige Konzept zu günstigen Preisen i
         </div>
     </section>
 
-    <section class="about-us-section">
+    <section class="about-us-section" id="uber-uns">
         <div class="container">
-            <h3>Über Uns</h3>
-            <p class="sect-descrip">Die Inside ist ein Projekt von Menschen, die der Komplexität, der Hektik und dem Stress der heutigen Geschäftswelt mit der „Einfachheit“
+            <h3 class="animated">Über Uns</h3>
+            <p class="animated sect-descrip">Die Inside ist ein Projekt von Menschen, die der Komplexität, der Hektik und dem Stress der heutigen Geschäftswelt mit der „Einfachheit“
                 <br/>
                 eines klaren Konzept entgegenwirken wollen.
             </p>
-            <span class="sect-title-line"></span>
+            <span class="animated sect-title-line"></span>
 
             <div class="crewmans-wrap clearfix">
-                <a href="#" class="crewman-block">
+                <a href="#" class="crewman-block animated left">
                     <span class="photo-wrap">
                         <span class="bg"></span>
                         <img src="img/crewman-1.png" alt=""/>
@@ -242,7 +243,7 @@ Profitieren Sie von der Möglichkeit das fertige Konzept zu günstigen Preisen i
                         Liebt den Sport und das Motorradfahren, nie um eine spontane Ausrede verlegen, entspannt in geselliger Runde.
                     </span>
                 </a>
-                <a href="#" class="crewman-block">
+                <a href="#" class="crewman-block animated center">
                     <span class="photo-wrap">
                         <span class="bg"></span>
                         <img src="img/crewman-2.png" alt=""/>
@@ -258,7 +259,7 @@ Profitieren Sie von der Möglichkeit das fertige Konzept zu günstigen Preisen i
                         Leidenschaftlicher Motorradfahrer, mag schwarzen Humor und lieblichen WeiSwein.
                     </span>
                 </a>
-                <a href="#" class="crewman-block">
+                <a href="#" class="crewman-block animated right">
                     <span class="photo-wrap">
                         <span class="bg"></span>
                         <img src="img/crewman-3.png" alt=""/>
@@ -278,18 +279,18 @@ Profitieren Sie von der Möglichkeit das fertige Konzept zu günstigen Preisen i
         </div>
     </section>
 
-    <section class="contact-sect">
+    <section class="contact-sect" id="kontakt">
         <div class="container">
-            <h3>Kontakt</h3>
-            <p class="sect-descrip">
+            <h3 class="animated">Kontakt</h3>
+            <p class="animated sect-descrip">
                 One of the primary sources of our success is taking care of the quality and the dynamic development of our products.
                 <br/>
                 We invest in development to ensure that our products are safe and modern.
             </p>
-            <span class="sect-title-line"></span>
+            <span class="animated sect-title-line"></span>
             <div class="clear"></div>
             <div class="contact-wrap clearfix">
-                <div class="contact-form">
+                <div class="contact-form animated">
                     <form action="#">
                         <input type="text" class="input input-name" placeholder="Your name"/>
                         <input type="text" class="input input-phone" placeholder="Telefon:"/>
@@ -298,7 +299,7 @@ Profitieren Sie von der Möglichkeit das fertige Konzept zu günstigen Preisen i
                         <button class="btn-send">SEND</button>
                     </form>
                 </div>
-                <div class="contact-info">
+                <div class="contact-info animated">
                     <p class="title">Das Kontaktformular ist nichts für Sie, probieren Sie es direkt bei uns</p>
                     <strong>Kontakt:</strong>
                     <address>
@@ -327,7 +328,7 @@ Profitieren Sie von der Möglichkeit das fertige Konzept zu günstigen Preisen i
 
     <footer>
         <div class="container clearfix">
-            <div class="footer-block">
+            <div class="footer-block animated">
                 <h6>Kontakt:</h6>
                 Inside Funktionelle Diagnosetechnik GmbH <br/>
                 Balthasar-Neumann-Platz 1<br/>
@@ -335,7 +336,7 @@ Profitieren Sie von der Möglichkeit das fertige Konzept zu günstigen Preisen i
                 E-Mail: info@inside-solutions.de<br/>
                 Tel.: +491733522324
             </div>
-            <div class="footer-block">
+            <div class="footer-block animated">
                 <h6>RGesellschaft:</h6>
                 Sitz der Gesellschaft: 97440 Werneck <br/>
                 Geschäftsführer: Lars Eberhardt<br/>
@@ -343,7 +344,7 @@ Profitieren Sie von der Möglichkeit das fertige Konzept zu günstigen Preisen i
                 AG Schweinfurt<br/>
                 Umsatzsteuer-ID: DE 193235867
             </div>
-            <div class="footer-block">
+            <div class="footer-block animated">
                 <h6>Rechtliches:</h6>
                 Wir weisen Sie ausdrücklich darauf hin, d <br/>
                 ass wir für die Inhalte von Seiten, auf die von<br/>
@@ -351,16 +352,16 @@ Profitieren Sie von der Möglichkeit das fertige Konzept zu günstigen Preisen i
                 die nicht zu unserem Angebot gehören, keinerlei<br/>
                 Haftung übernehmen. Wir distanzieren uns von deren Inhalten.
             </div>
-            <div class="footer-block">
+            <div class="footer-block animated">
                 <h6>Linksetzung:</h6>
                 Links auf unsere Internetpräsenzen sind stets so zu setzen, dass die jeweilige Startseite aufgerufen wird. Die Einbindung in Frames anderer Präsen
             </div>
-            <div class="footer-block copyright-block">
+            <div class="footer-block animated copyright-block">
                 <h6>Copyright:</h6>
                 Alle Inhalte unserer Webpräsenz unterliegen dem Urheberrecht. Weder Text, Grafiken, Fotos noch sonstige Inhalte dürfen ohne unsere ausdrückliche schriftliche Genehmigung anderweitig verwendet werden. Die Rechte aller erwähnten Marken, Warenzeichen oder Logos gehören den jeweiligen Eigentümern.
             </div>
         </div>
-        <div class="container">
+        <div class="container footer-bottom animated">
             <div class="footer-social">
                 <a href="#" class="fb">
                     <i></i>
@@ -391,7 +392,7 @@ Profitieren Sie von der Möglichkeit das fertige Konzept zu günstigen Preisen i
             <div class="copyright">
                 Copyright © 2015 - Inside - All rights reserved.
             </div>
-            <a href="#" class="scrollTop">
+            <a href="#header" class="scrollTop scrollto">
                 <i></i>
                 <i class="hover"></i>
                 <i class="active"></i>
@@ -399,9 +400,6 @@ Profitieren Sie von der Möglichkeit das fertige Konzept zu günstigen Preisen i
 
         </div>
     </footer>
-
-
-
 
 </div>
 <!--  begin scripts  -->

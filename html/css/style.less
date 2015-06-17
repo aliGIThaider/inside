@@ -205,6 +205,10 @@ section {
 .first-slider-sect {
     background: @bg-light;
     margin: -2px 0 0;
+    .container {
+        opacity: 0;
+
+    }
     .slider {
         display: inline-block;
         width: 48.72%;
@@ -230,9 +234,12 @@ section {
 .swiper-container {
     width: 100%;
 }
-.swiper-slide img {
-    max-width: 100%;
-    width: 100%;
+.swiper-slide {
+    cursor: pointer;
+    img {
+        max-width: 100%;
+        width: 100%;
+    }
 }
 .competencies-sect {
 
@@ -1194,7 +1201,12 @@ footer {
         }
     }
 }
-
+.animated {
+    opacity: 0;
+    &.done {
+        opacity: 1;
+    }
+}
 
 
 /****  media  ****/

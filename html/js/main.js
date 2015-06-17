@@ -24,9 +24,12 @@ app.plugins = (function ($) {
 app.events = (function ($) {
     function init() {
         setEqualHeight($('.competencies-block'));
-        //setEqualHeight($('.concept-block'));
         konzept();
         crewmanHover();
+        menuScroll();
+        crewmansSetClasses();
+        titleFadeIn();
+        animateOnScroll();
     }
 
     function setEqualHeight(elem) {
@@ -120,7 +123,6 @@ app.events = (function ($) {
             }
         );
     }
-
     function crewmanHover() {
         var crewmanBlock = $('.crewman-block'),
             $this,
@@ -135,7 +137,200 @@ app.events = (function ($) {
             }
         )
     }
+    function menuScroll() {
+        jQuery(document).ready(function() {
+            jQuery("a.scrollto").click(function () {
+                elementClick = jQuery(this).attr("href")
+                destination = jQuery(elementClick).offset().top;
+                jQuery("html:not(:animated),body:not(:animated)").animate({scrollTop: destination}, 1100);
+                return false;
+            });
+        });
+    }
+    function crewmansSetClasses() {
+        var crewmanBlock = $('.crewman-block');
+        crewmanBlock.addClass('left');
+        console.log(crewmanBlock);
+        crewmanBlock.filter(':first').addClass('left');
+        crewmanBlock.filter(':nth-child(2)').addClass('center');
+        crewmanBlock.filter(':nth-child(3)').addClass('right');
+    }
+    function titleFadeIn() {
+        $(window).load(function() {
+            $('header h1').addClass('fadeInLeft done');
+            $('header p').addClass('fadeInDown done');
+            $('header h2').addClass('fadeInUp done');
+            $('.navbar').addClass('fadeInUp done');
+        });
+    }
+    function animateOnScroll() {
+        var windowHeight = $(window).height();
+        var animateDelay = windowHeight;
+        $(window).resize(function() {
+            var animateDelay = windowHeight;
+        });
 
+        $(window).scroll(function() {
+            var topOfWindow = $(window).scrollTop();
+            $('.first-slider-sect .container').each(function(){
+                var imagePos = $(this).offset().top;
+                if (imagePos < topOfWindow+animateDelay) {
+                    $(this).addClass("fadeInUp done");
+                }
+            });
+
+            $('.competencies-sect h3').each(function(){
+                var imagePos = $(this).offset().top;
+                if (imagePos < topOfWindow+animateDelay) {
+                    $(this).addClass("fadeInUp done");
+                }
+            });
+            $('.competencies-sect .sect-descrip').each(function(){
+                var imagePos = $(this).offset().top;
+                if (imagePos < topOfWindow+animateDelay) {
+                    $(this).addClass("fadeInUp done");
+                }
+            });
+            $('.competencies-sect .sect-title-line').each(function(){
+                var imagePos = $(this).offset().top;
+                if (imagePos < topOfWindow+animateDelay) {
+                    $(this).addClass("fadeInUp done");
+                }
+            });
+            $('.competencies-block.left').each(function(){
+                var imagePos = $(this).offset().top;
+                if (imagePos < topOfWindow+animateDelay) {
+                    $(this).addClass("fadeInLeft done");
+                }
+            });
+            $('.competencies-block.right').each(function(){
+                var imagePos = $(this).offset().top;
+                if (imagePos < topOfWindow+animateDelay) {
+                    $(this).addClass("fadeInRight done");
+                }
+            });
+
+            $('.concept-sect h3').each(function(){
+                var imagePos = $(this).offset().top;
+                if (imagePos < topOfWindow+animateDelay) {
+                    $(this).addClass("fadeInUp done");
+                }
+            });
+            $('.concept-sect .sect-descrip').each(function(){
+                var imagePos = $(this).offset().top;
+                if (imagePos < topOfWindow+animateDelay) {
+                    $(this).addClass("fadeInUp done");
+                }
+            });
+            $('.concept-sect .sect-title-line').each(function(){
+                var imagePos = $(this).offset().top;
+                if (imagePos < topOfWindow+animateDelay) {
+                    $(this).addClass("fadeInUp done");
+                }
+            });
+
+            $('.concept-img').each(function(){
+                var imagePos = $(this).offset().top;
+                if (imagePos < topOfWindow+animateDelay) {
+                    $(this).addClass("fadeInUp done");
+                }
+            });
+            $('.concept-blocks-wrap').each(function(){
+                var imagePos = $(this).offset().top;
+                if (imagePos < topOfWindow+animateDelay) {
+                    $(this).addClass("slideInLeft done");
+                }
+            });
+
+
+            $('.about-us-section h3').each(function(){
+                var imagePos = $(this).offset().top;
+                if (imagePos < topOfWindow+animateDelay) {
+                    $(this).addClass("fadeInUp done");
+                }
+            });
+            $('.about-us-section .sect-descrip').each(function(){
+                var imagePos = $(this).offset().top;
+                if (imagePos < topOfWindow+animateDelay) {
+                    $(this).addClass("fadeInUp done");
+                }
+            });
+            $('.about-us-section .sect-title-line').each(function(){
+                var imagePos = $(this).offset().top;
+                if (imagePos < topOfWindow+animateDelay) {
+                    $(this).addClass("fadeInUp done");
+                }
+            });
+
+            $('.crewman-block.left').each(function(){
+                var imagePos = $(this).offset().top;
+                if (imagePos < topOfWindow+animateDelay) {
+                    $(this).addClass("fadeInLeft done");
+                }
+            });
+            $('.crewman-block.right').each(function(){
+                var imagePos = $(this).offset().top;
+                if (imagePos < topOfWindow+animateDelay) {
+                    $(this).addClass("fadeInRight done");
+                }
+            });
+            $('.crewman-block.center').each(function(){
+                var imagePos = $(this).offset().top;
+                if (imagePos < topOfWindow+animateDelay) {
+                    $(this).addClass("fadeInUp done");
+                }
+            });
+
+            $('.contact-sect h3').each(function(){
+                var imagePos = $(this).offset().top;
+                if (imagePos < topOfWindow+animateDelay) {
+                    $(this).addClass("fadeInUp done");
+                }
+            });
+            $('.contact-sect .sect-descrip').each(function(){
+                var imagePos = $(this).offset().top;
+                if (imagePos < topOfWindow+animateDelay) {
+                    $(this).addClass("fadeInUp done");
+                }
+            });
+            $('.contact-sect .sect-title-line').each(function(){
+                var imagePos = $(this).offset().top;
+                if (imagePos < topOfWindow+animateDelay) {
+                    $(this).addClass("fadeInUp done");
+                }
+            });
+
+            $('.contact-form').each(function(){
+                var imagePos = $(this).offset().top;
+                if (imagePos < topOfWindow+animateDelay) {
+                    $(this).addClass("fadeInLeft done");
+                }
+            });
+            $('.contact-info').each(function(){
+                var imagePos = $(this).offset().top;
+                if (imagePos < topOfWindow+animateDelay) {
+                    $(this).addClass("fadeInRight done");
+                }
+            });
+
+            $('.footer-block').each(function(){
+                var imagePos = $(this).offset().top;
+                if (imagePos < topOfWindow+animateDelay) {
+                    $(this).addClass("fadeInUp done");
+                }
+            });
+
+            $('.footer-bottom').each(function(){
+                var imagePos = $(this).offset().top;
+                if (imagePos < topOfWindow+animateDelay) {
+                    $(this).addClass("fadeInUp done");
+                }
+            });
+
+
+
+        });
+    }
 
     return {
         init: init
