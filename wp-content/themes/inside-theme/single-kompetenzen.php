@@ -7,30 +7,24 @@ Template Name: kompetenzen
 <div class="wrapper-kompetenzen">
 	<div class="kompetenzen-block">
 		<div class="container clearfix">
-			<a href="<?php echo site_url(); ?>" class="back-to-main-link"><  Come back HOME</a>
+			<a href="javascript:history.go(-1)" class="back-to-main-link" onMouseOver="self.status=document.referrer;return true"><  Come back HOME</a>
 
 			<div class="slider-left">
-				<div class="swiper-container swiper-container-inner">
-					<div class="swiper-wrapper">
-						<div class="swiper-slide posrel">
-							<img src="<?php echo get_template_directory_uri(); ?>/img/slide-inner.jpg" alt=""/>
-							<span class="logo-mittel"></span>
-							<span class="dienstle">Dienstleistungen</span>
-						</div>
-						<div class="swiper-slide posrel">
-							<img src="<?php echo get_template_directory_uri(); ?>/img/slide-inner.jpg" alt=""/>
-							<span class="logo-mittel"></span>
-							<span class="dienstle">Dienstleistungen</span>
-						</div>
-						<div class="swiper-slide posrel">
-							<img src="<?php echo get_template_directory_uri(); ?>/img/slide-inner.jpg" alt=""/>
-							<span class="logo-mittel"></span>
-							<span class="dienstle">Dienstleistungen</span>
-						</div>
-					</div>
-					<div class="swiper-button-prev"></div>
-					<div class="swiper-button-next"></div>
+				<div class="flexslider">
+					<ul class="slides">
+						<li>
+							<img src="<?php echo get_template_directory_uri(); ?>/img/inner-slide-1.png" alt=""/>
+						</li>
+						<li>
+							<img src="<?php echo get_template_directory_uri(); ?>/img/inner-slide-2.png" alt=""/>
+						</li>
+						<li>
+							<img src="<?php echo get_template_directory_uri(); ?>/img/inner-slide-3.png" alt=""/>
+						</li>
+					</ul>
 				</div>
+<!--				<span class="logo-mittel"></span>-->
+<!--				<span class="dienstle">Dienstleistungen</span>-->
 			</div>
 			<div class="text-right">
 				<div class="text-top">

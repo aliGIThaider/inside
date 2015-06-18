@@ -21,7 +21,7 @@
 	</div>
 	<![endif]-->
 <div class="wrapper">
-	<header id="header">
+	<header id="header" class="waypoint">
 		<div class="container">
 				<?$title1 = get_field('title_1', false, false); ?>
 				<? if( !empty($title1) ): ?>
@@ -43,7 +43,7 @@
 						<?php echo $title3; ?>
 					</h2>
 				<? endif; ?>
-			<a href="#" class="header-link">Impressum</a>
+			<a href="#kontakt" class="scrollto header-link">Impressum</a>
 		</div>
 	</header>
 	<div class="navbar animated">
@@ -51,11 +51,11 @@
 			<a href="<?php echo site_url(); ?>" class="logo"><img src="<?php echo get_template_directory_uri(); ?>/img/logo.png" alt=""/></a>
 			<nav>
 				<ul>
-					<li><a href="#first-sect" class="scrollto">Startseite</a></li>
+					<li><a href="#header" class="scrollto active">Startseite</a></li>
 					<li><a href="#kompetenzen" class="scrollto">Kompetenzen</a></li>
 					<li><a href="#konzept" class="scrollto">Konzept</a></li>
 					<li><a href="#uber-uns" class="scrollto">Über Uns</a></li>
-					<li><a href="#kontakt" class="scrollto">Kontakt</a></li>
+					<li><a href="#kontakt" class="contacts scrollto">Kontakt</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -104,7 +104,7 @@
 		</div>
 	</section>
 
-	<section class="competencies-sect" id="kompetenzen">
+	<section class="competencies-sect waypoint" id="kompetenzen">
 		<div class="container">
 			<?php $screen2Title = get_field('title', 34); ?>
 			<? if( !empty($screen2Title) ): ?>
@@ -140,7 +140,7 @@
 		</div>
 	</section>
 
-	<section class="concept-sect" id="konzept">
+	<section class="concept-sect waypoint" id="konzept">
 		<div class="container">
 			<?php $screen2Title = get_field('title', 36); ?>
 			<? if( !empty($screen2Title) ): ?>
@@ -193,7 +193,7 @@
 		</div>
 	</section>
 
-	<section class="about-us-section" id="uber-uns">
+	<section class="about-us-section waypoint" id="uber-uns">
 		<div class="container">
 			<?php $screen2Title = get_field('title', 38); ?>
 			<? if( !empty($screen2Title) ): ?>
@@ -247,7 +247,7 @@
 		</div>
 	</section>
 
-	<section class="contact-sect" id="kontakt">
+	<section class="contact-sect waypoint" id="kontakt">
 		<div class="container">
 			<?php $screen2Title = get_field('title', 40); ?>
 			<? if( !empty($screen2Title) ): ?>
@@ -299,10 +299,15 @@
 						</p>
 					<? endif; ?>
 				</div>
-				<?php $fileLink = get_field('file', 64); ?>
+				<?php $fileLink = get_field('file_1', 64); ?>
 				<? if( !empty($fileLink) ): ?>
 					<a href="<? echo $fileLink['url']; ?>" class="contacts-link">
-						Datenschutzerklärung <br/>
+						Datenschutzerklärung
+					</a>
+				<? endif; ?>
+				<?php $fileLink = get_field('file_2', 64); ?>
+				<? if( !empty($fileLink) ): ?>
+					<a href="<? echo $fileLink['url']; ?>" class="contacts-link price">
 						Preisliste
 					</a>
 				<? endif; ?>

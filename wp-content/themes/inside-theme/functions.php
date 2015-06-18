@@ -5,9 +5,13 @@
 function load_style_script () {
 	wp_enqueue_script('jquery-1.11.2.min' , get_template_directory_uri() . '/js/jquery-1.11.2.min.js');
 	wp_enqueue_script('swiper.jquery.min' , get_template_directory_uri() . '/js/swiper.jquery.min.js');
+	wp_enqueue_script('jquery.flexslider-min' , get_template_directory_uri() . '/js/jquery.flexslider-min.js');
+	wp_enqueue_script('jquery-scrolltofixed-min' , get_template_directory_uri() . '/js/jquery-scrolltofixed-min.js');
+	wp_enqueue_script('jquery.waypoints.min' , get_template_directory_uri() . '/js/jquery.waypoints.min.js');
 	wp_enqueue_script('main' , get_template_directory_uri() . '/js/main.js');
 	wp_enqueue_style('normalize', get_template_directory_uri() . '/css/normalize.css');
 	wp_enqueue_style('swiper', get_template_directory_uri() . '/css/swiper.css');
+	wp_enqueue_style('flexslider', get_template_directory_uri() . '/css/flexslider.css');
     wp_enqueue_style('animate', get_template_directory_uri() . '/css/animate.css');
     wp_enqueue_style('style', get_template_directory_uri() . '/css/style.css');
 }

@@ -3,7 +3,8 @@ var app = app || {};
 app.plugins = (function ($) {
     function init() {
         swiper();
-        swiperInnerPage();
+        //swiperInnerPage();
+        flexslider();
     }
 
     function swiper() {
@@ -11,9 +12,10 @@ app.plugins = (function ($) {
             nextButton: '.swiper-button-next',
             prevButton: '.swiper-button-prev',
             loop: true,
-            effect: 'fade',
-            autoplay: 7000,
-            speed: 800
+            effect: 'slide',
+            simulateTouch: false,
+            autoplay: 1000,
+            speed: 400
         })
     }
     function swiperInnerPage() {
@@ -22,8 +24,31 @@ app.plugins = (function ($) {
             prevButton: '.swiper-button-prev',
             loop: true,
             effect: 'fade',
-            speed: 800
+            speed: 400
         })
+    }
+    function flexslider() {
+        var textRight = $('.text-right');
+        var flexslider = $('.flexslider').flexslider({
+            animation: "slide",
+            prevText: '',
+            nextText: '',
+            slideshowSpeed: 2000,
+            controlNav: false,
+            after: function () {
+                textRight.removeClass('slide2');
+                textRight.removeClass('slide3');
+                var num = $('.flex-active-slide').index();
+                console.log(num);
+                if (num == 2){
+                    textRight.addClass('slide2');
+                }
+                if (num == 3) {
+                    textRight.addClass('slide3');
+                }
+            }
+        });
+
     }
 
     return {
@@ -36,13 +61,16 @@ app.events = (function ($) {
         setEqualHeight($('.competencies-block'));
         konzept();
         crewmanHover();
-        menuScroll();
+        waypoints();
         setClasses();
         titleFadeIn();
         animateOnScroll();
         crewmanClick();
         competBlockClick();
         hoverOnSlider();
+        scrollToContacts();
+        fixedMenu();
+
     }
 
     function setEqualHeight(elem) {
@@ -68,7 +96,9 @@ app.events = (function ($) {
                     var maxHeight = 0;
                     block.each(function () {
                         if ($(this).outerHeight()>maxHeight){
+                            block.removeAttr('style');
                             maxHeight = $(this).outerHeight();
+                            console.log(maxHeight);
                         }
                     });
                     block.css('height', maxHeight);
@@ -79,35 +109,39 @@ app.events = (function ($) {
     function konzept() {
         var conceptBlock = $('.concept-block'),
             maxHeight;
-        function setHeightAndLines() {
-            $(window).load(function() {
-                if (conceptBlock.length>0){
-                    maxHeight = 0;
-                    conceptBlock.each(function () {
-                        if ($(this).outerHeight()>maxHeight){
-                            maxHeight = $(this).outerHeight();
-                        }
-                    });
-                    conceptBlock.css('height', maxHeight);
-                }
-                if ($(window).width() < 769 ){
-                    var concBlockHeight = maxHeight;
-                    $('.concept-block:nth-child(4) .line').css('top', (concBlockHeight + 55) + 'px');
-                    $('.concept-block:nth-child(5) .line').css('top', (concBlockHeight + 75) + 'px');
-                }
-                if ($(window).width() < 641 ){
-                    var concBlockHeight = maxHeight;
-                    $('.concept-block:nth-child(4) .line').css('top', (concBlockHeight + 55) + 'px');
-                    $('.concept-block:nth-child(5) .line').css('top', (concBlockHeight + 75) + 'px');
-                }
+        $(window).load(function() {
+            function setHeightAndLines() {
+                        maxHeight = 0;
+                        conceptBlock.removeAttr('style');
+                    if (conceptBlock.length>0){
+                        conceptBlock.each(function () {
+                            if ($(this).outerHeight()>maxHeight){
+                                maxHeight = $(this).outerHeight();
+                            }
+                        });
+                        conceptBlock.css('height', maxHeight);
+                    }
+                    if ($(window).width() < 769 ){
+                        var concBlockHeight = maxHeight;
+                        $('.concept-block:nth-child(4) .line').css('top', (concBlockHeight + 55) + 'px');
+                        $('.concept-block:nth-child(5) .line').css('top', (concBlockHeight + 75) + 'px');
+                    } else {
+                        $('.concept-block:nth-child(4) .line').css('top', '60px');
+                        $('.concept-block:nth-child(5) .line').css('top', '80px');
+                    }
+                    if ($(window).width() < 641 ){
+                        var concBlockHeight = maxHeight;
+                        $('.concept-block:nth-child(4) .line').css('top', (concBlockHeight + 55) + 'px');
+                        $('.concept-block:nth-child(5) .line').css('top', (concBlockHeight + 75) + 'px');
+                    }
             }
-        )}
-        setHeightAndLines();
-        $(window).resize(function () {
             setHeightAndLines();
+            $(window).resize(function () {
+                window.setTimeout(function() {
+                    setHeightAndLines();
+                }, 200);
+            });
         });
-
-
 
 
         $('.bulb-wrap').hover(
@@ -150,16 +184,6 @@ app.events = (function ($) {
             }
         )
     }
-    function menuScroll() {
-        jQuery(document).ready(function() {
-            jQuery("a.scrollto").click(function () {
-                elementClick = jQuery(this).attr("href")
-                destination = jQuery(elementClick).offset().top;
-                jQuery("html:not(:animated),body:not(:animated)").animate({scrollTop: destination}, 1100);
-                return false;
-            });
-        });
-    }
     function setClasses() {
         var crewmanBlock = $('.crewman-block'),
             competBlock = $('.competencies-block');
@@ -188,166 +212,160 @@ app.events = (function ($) {
             var animateDelay = windowHeight;
         });
 
-        $(window).scroll(function() {
-            var topOfWindow = $(window).scrollTop();
-            $('.first-slider-sect .container').each(function(){
-                var imagePos = $(this).offset().top;
-                if (imagePos < topOfWindow+animateDelay) {
-                    $(this).addClass("fadeInUp done");
-                }
-            });
+        if ($(window).width()>480) {
+            $(window).scroll(function() {
+                var topOfWindow = $(window).scrollTop();
+                $('.first-slider-sect .container').each(function(){
+                    var imagePos = $(this).offset().top;
+                    if (imagePos < topOfWindow+animateDelay) {
+                        $(this).addClass("fadeInUp done");
+                    }
+                });
+                $('.competencies-sect h3').each(function(){
+                    var imagePos = $(this).offset().top;
+                    if (imagePos < topOfWindow+animateDelay) {
+                        $(this).addClass("fadeInUp done");
+                    }
+                });
+                $('.competencies-sect .sect-descrip').each(function(){
+                    var imagePos = $(this).offset().top;
+                    if (imagePos < topOfWindow+animateDelay) {
+                        $(this).addClass("fadeInUp done");
+                    }
+                });
+                $('.competencies-sect .sect-title-line').each(function(){
+                    var imagePos = $(this).offset().top;
+                    if (imagePos < topOfWindow+animateDelay) {
+                        $(this).addClass("fadeInUp done");
+                    }
+                });
+                $('.competencies-block.left').each(function(){
+                    var imagePos = $(this).offset().top;
+                    if (imagePos < topOfWindow+animateDelay) {
+                        $(this).addClass("fadeInLeft done");
+                    }
+                });
+                $('.competencies-block.right').each(function(){
+                    var imagePos = $(this).offset().top;
+                    if (imagePos < topOfWindow+animateDelay) {
+                        $(this).addClass("fadeInRight done");
+                    }
+                });
+                $('.concept-sect h3').each(function(){
+                    var imagePos = $(this).offset().top;
+                    if (imagePos < topOfWindow+animateDelay) {
+                        $(this).addClass("fadeInUp done");
+                    }
+                });
+                $('.concept-sect .sect-descrip').each(function(){
+                    var imagePos = $(this).offset().top;
+                    if (imagePos < topOfWindow+animateDelay) {
+                        $(this).addClass("fadeInUp done");
+                    }
+                });
+                $('.concept-sect .sect-title-line').each(function(){
+                    var imagePos = $(this).offset().top;
+                    if (imagePos < topOfWindow+animateDelay) {
+                        $(this).addClass("fadeInUp done");
+                    }
+                });
+                $('.concept-img').each(function(){
+                    var imagePos = $(this).offset().top;
+                    if (imagePos < topOfWindow+animateDelay) {
+                        $(this).addClass("fadeInUp done");
+                    }
+                });
+                $('.concept-blocks-wrap').each(function(){
+                    var imagePos = $(this).offset().top;
+                    if (imagePos < topOfWindow+animateDelay) {
+                        $(this).addClass("slideInLeft done");
+                    }
+                });
+                $('.about-us-section h3').each(function(){
+                    var imagePos = $(this).offset().top;
+                    if (imagePos < topOfWindow+animateDelay) {
+                        $(this).addClass("fadeInUp done");
+                    }
+                });
+                $('.about-us-section .sect-descrip').each(function(){
+                    var imagePos = $(this).offset().top;
+                    if (imagePos < topOfWindow+animateDelay) {
+                        $(this).addClass("fadeInUp done");
+                    }
+                });
+                $('.about-us-section .sect-title-line').each(function(){
+                    var imagePos = $(this).offset().top;
+                    if (imagePos < topOfWindow+animateDelay) {
+                        $(this).addClass("fadeInUp done");
+                    }
+                });
+                $('.crewman-block.left').each(function(){
+                    var imagePos = $(this).offset().top;
+                    if (imagePos < topOfWindow+animateDelay) {
+                        $(this).addClass("fadeInLeft done");
+                    }
+                });
+                $('.crewman-block.right').each(function(){
+                    var imagePos = $(this).offset().top;
+                    if (imagePos < topOfWindow+animateDelay) {
+                        $(this).addClass("fadeInRight done");
+                    }
+                });
+                $('.crewman-block.center').each(function(){
+                    var imagePos = $(this).offset().top;
+                    if (imagePos < topOfWindow+animateDelay) {
+                        $(this).addClass("fadeInUp done");
+                    }
+                });
+                $('.contact-sect h3').each(function(){
+                    var imagePos = $(this).offset().top;
+                    if (imagePos < topOfWindow+animateDelay) {
+                        $(this).addClass("fadeInUp done");
+                    }
+                });
+                $('.contact-sect .sect-descrip').each(function(){
+                    var imagePos = $(this).offset().top;
+                    if (imagePos < topOfWindow+animateDelay) {
+                        $(this).addClass("fadeInUp done");
+                    }
+                });
+                $('.contact-sect .sect-title-line').each(function(){
+                    var imagePos = $(this).offset().top;
+                    if (imagePos < topOfWindow+animateDelay) {
+                        $(this).addClass("fadeInUp done");
+                    }
+                });
+                $('.contact-form').each(function(){
+                    var imagePos = $(this).offset().top;
+                    if (imagePos < topOfWindow+animateDelay) {
+                        $(this).addClass("fadeInLeft done");
+                    }
+                });
+                $('.contact-info').each(function(){
+                    var imagePos = $(this).offset().top;
+                    if (imagePos < topOfWindow+animateDelay) {
+                        $(this).addClass("fadeInRight done");
+                    }
+                });
+                $('.footer-block').each(function(){
+                    var imagePos = $(this).offset().top;
+                    if (imagePos < topOfWindow+animateDelay) {
+                        $(this).addClass("fadeInUp done");
+                    }
+                });
+                $('.footer-bottom').each(function(){
+                    var imagePos = $(this).offset().top;
+                    if (imagePos < topOfWindow+animateDelay) {
+                        $(this).addClass("fadeInUp done");
+                    }
+                });
 
-            $('.competencies-sect h3').each(function(){
-                var imagePos = $(this).offset().top;
-                if (imagePos < topOfWindow+animateDelay) {
-                    $(this).addClass("fadeInUp done");
-                }
             });
-            $('.competencies-sect .sect-descrip').each(function(){
-                var imagePos = $(this).offset().top;
-                if (imagePos < topOfWindow+animateDelay) {
-                    $(this).addClass("fadeInUp done");
-                }
-            });
-            $('.competencies-sect .sect-title-line').each(function(){
-                var imagePos = $(this).offset().top;
-                if (imagePos < topOfWindow+animateDelay) {
-                    $(this).addClass("fadeInUp done");
-                }
-            });
-            $('.competencies-block.left').each(function(){
-                var imagePos = $(this).offset().top;
-                if (imagePos < topOfWindow+animateDelay) {
-                    $(this).addClass("fadeInLeft done");
-                }
-            });
-            $('.competencies-block.right').each(function(){
-                var imagePos = $(this).offset().top;
-                if (imagePos < topOfWindow+animateDelay) {
-                    $(this).addClass("fadeInRight done");
-                }
-            });
+        } else {
+            $('.animated').removeClass('animated');
+            $('.first-slider-sect .container').css('opacity', '1');
+        }
 
-            $('.concept-sect h3').each(function(){
-                var imagePos = $(this).offset().top;
-                if (imagePos < topOfWindow+animateDelay) {
-                    $(this).addClass("fadeInUp done");
-                }
-            });
-            $('.concept-sect .sect-descrip').each(function(){
-                var imagePos = $(this).offset().top;
-                if (imagePos < topOfWindow+animateDelay) {
-                    $(this).addClass("fadeInUp done");
-                }
-            });
-            $('.concept-sect .sect-title-line').each(function(){
-                var imagePos = $(this).offset().top;
-                if (imagePos < topOfWindow+animateDelay) {
-                    $(this).addClass("fadeInUp done");
-                }
-            });
-
-            $('.concept-img').each(function(){
-                var imagePos = $(this).offset().top;
-                if (imagePos < topOfWindow+animateDelay) {
-                    $(this).addClass("fadeInUp done");
-                }
-            });
-            $('.concept-blocks-wrap').each(function(){
-                var imagePos = $(this).offset().top;
-                if (imagePos < topOfWindow+animateDelay) {
-                    $(this).addClass("slideInLeft done");
-                }
-            });
-
-
-            $('.about-us-section h3').each(function(){
-                var imagePos = $(this).offset().top;
-                if (imagePos < topOfWindow+animateDelay) {
-                    $(this).addClass("fadeInUp done");
-                }
-            });
-            $('.about-us-section .sect-descrip').each(function(){
-                var imagePos = $(this).offset().top;
-                if (imagePos < topOfWindow+animateDelay) {
-                    $(this).addClass("fadeInUp done");
-                }
-            });
-            $('.about-us-section .sect-title-line').each(function(){
-                var imagePos = $(this).offset().top;
-                if (imagePos < topOfWindow+animateDelay) {
-                    $(this).addClass("fadeInUp done");
-                }
-            });
-
-            $('.crewman-block.left').each(function(){
-                var imagePos = $(this).offset().top;
-                if (imagePos < topOfWindow+animateDelay) {
-                    $(this).addClass("fadeInLeft done");
-                }
-            });
-            $('.crewman-block.right').each(function(){
-                var imagePos = $(this).offset().top;
-                if (imagePos < topOfWindow+animateDelay) {
-                    $(this).addClass("fadeInRight done");
-                }
-            });
-            $('.crewman-block.center').each(function(){
-                var imagePos = $(this).offset().top;
-                if (imagePos < topOfWindow+animateDelay) {
-                    $(this).addClass("fadeInUp done");
-                }
-            });
-
-            $('.contact-sect h3').each(function(){
-                var imagePos = $(this).offset().top;
-                if (imagePos < topOfWindow+animateDelay) {
-                    $(this).addClass("fadeInUp done");
-                }
-            });
-            $('.contact-sect .sect-descrip').each(function(){
-                var imagePos = $(this).offset().top;
-                if (imagePos < topOfWindow+animateDelay) {
-                    $(this).addClass("fadeInUp done");
-                }
-            });
-            $('.contact-sect .sect-title-line').each(function(){
-                var imagePos = $(this).offset().top;
-                if (imagePos < topOfWindow+animateDelay) {
-                    $(this).addClass("fadeInUp done");
-                }
-            });
-
-            $('.contact-form').each(function(){
-                var imagePos = $(this).offset().top;
-                if (imagePos < topOfWindow+animateDelay) {
-                    $(this).addClass("fadeInLeft done");
-                }
-            });
-            $('.contact-info').each(function(){
-                var imagePos = $(this).offset().top;
-                if (imagePos < topOfWindow+animateDelay) {
-                    $(this).addClass("fadeInRight done");
-                }
-            });
-
-            $('.footer-block').each(function(){
-                var imagePos = $(this).offset().top;
-                if (imagePos < topOfWindow+animateDelay) {
-                    $(this).addClass("fadeInUp done");
-                }
-            });
-
-            $('.footer-bottom').each(function(){
-                var imagePos = $(this).offset().top;
-                if (imagePos < topOfWindow+animateDelay) {
-                    $(this).addClass("fadeInUp done");
-                }
-            });
-
-
-
-        });
     }
     function crewmanClick() {
         $('.crewman-block').on('click', function(e){
@@ -397,6 +415,172 @@ app.events = (function ($) {
                 textHidden2.removeClass('visible');
             }
         )
+    }
+
+    function scrollToContacts() {
+        $('.header-link').on('click', function () {
+            $('nav ul li a').removeClass('active');
+            $('nav ul li a.contacts').addClass('active');
+        })
+    }
+    function fixedMenu() {
+        $('.navbar').scrollToFixed();
+    }
+    function waypoints() {
+        var navLinks = $('nav ul li a');
+
+
+        var elements = $('.waypoint');
+        var element1 = $('#header');
+        var element2 = $('#kompetenzen');
+        var element3 = $('#konzept');
+        var element4 = $('#uber-uns');
+        var element5 = $('#kontakt');
+        if ($('#header').length>0) {
+            var offset = parseInt($(window).height()*0.15);
+            var begin1 = parseInt(element1.offset().top);
+            var begin2 = parseInt(element2.offset().top);
+            var begin3 = parseInt(element3.offset().top);
+            var begin4 = parseInt(element4.offset().top);
+            var begin5 = parseInt(element5.offset().top);
+            var end1 = begin1 + parseInt(element1.outerHeight());
+            var end2 = begin2 + parseInt(element2.outerHeight());
+            var end3 = begin3 + parseInt(element3.outerHeight());
+            var end4 = begin4 + parseInt(element4.outerHeight());
+            var end5 = begin5 + parseInt(element5.outerHeight());
+
+            $(window).resize(function () {
+                offset = parseInt($(window).height()*0.15);
+                begin1 = parseInt(element1.offset().top);
+                begin2 = parseInt(element2.offset().top);
+                begin3 = parseInt(element3.offset().top);
+                begin4 = parseInt(element4.offset().top);
+                begin5 = parseInt(element5.offset().top);
+                end1 = begin1 + parseInt(element1.outerHeight());
+                end2 = begin2 + parseInt(element2.outerHeight());
+                end3 = begin3 + parseInt(element3.outerHeight());
+                end4 = begin4 + parseInt(element4.outerHeight());
+                end5 = begin5 + parseInt(element5.outerHeight());
+            });
+        }
+
+
+
+
+        var lastScrollTop = 0;
+        var id;
+        $(window).scroll(function () {
+            var st = $(this).scrollTop();
+            if (st > lastScrollTop){
+                var scrollPos = parseInt(window.pageYOffset);
+
+                if ( scrollPos > begin1){
+                    if ( scrollPos < end1 ){
+                        if (!element1.hasClass('active')) {
+                            navLinks.removeClass('active');
+                            id = element1.attr('id');
+                            $('nav ul li a[href*="' + id + '"]').addClass('active');
+                        }
+                    }
+                }
+                if ( scrollPos > begin2){
+                    if ( scrollPos < end2 ){
+                        if (!element2.hasClass('active')) {
+                            navLinks.removeClass('active');
+                            id = element2.attr('id');
+                            $('nav ul li a[href*="' + id + '"]').addClass('active');
+                        }
+                    }
+                }
+                if ( scrollPos > begin3){
+                    if ( scrollPos < end3 ){
+                        if (!element3.hasClass('active')) {
+                            navLinks.removeClass('active');
+                            id = element3.attr('id');
+                            $('nav ul li a[href*="' + id + '"]').addClass('active');
+                        }
+                    }
+                }
+                if ( scrollPos > begin4){
+                    if ( scrollPos < end4 ){
+                        if (!element4.hasClass('active')) {
+                            navLinks.removeClass('active');
+                            id = element4.attr('id');
+                            $('nav ul li a[href*="' + id + '"]').addClass('active');
+                        }
+                    }
+                }
+                if ( scrollPos > begin5){
+                    if ( scrollPos < end5 ){
+                        if (!element5.hasClass('active')) {
+                            navLinks.removeClass('active');
+                            id = element5.attr('id');
+                            $('nav ul li a[href*="' + id + '"]').addClass('active');
+                        }
+                    }
+                }
+            } else {
+                var scrollPos = parseInt(window.pageYOffset);
+                if ( scrollPos > begin1){
+                    if ( scrollPos < end1 ){
+                        if (!element1.hasClass('active')) {
+                            navLinks.removeClass('active');
+                            id = element1.attr('id');
+                            $('nav ul li a[href*="' + id + '"]').addClass('active');
+                        }
+                    }
+                    if ( scrollPos > begin2){
+                        if ( scrollPos < end2 ){
+                            if (!element2.hasClass('active')) {
+                                navLinks.removeClass('active');
+                                id = element2.attr('id');
+                                $('nav ul li a[href*="' + id + '"]').addClass('active');
+                            }
+                        }
+                    }
+                    if ( scrollPos > begin3){
+                        if ( scrollPos < end3 ){
+                            if (!element3.hasClass('active')) {
+                                navLinks.removeClass('active');
+                                id = element3.attr('id');
+                                $('nav ul li a[href*="' + id + '"]').addClass('active');
+                            }
+                        }
+                    }
+                    if ( scrollPos > begin4){
+                        if ( scrollPos < end4 ){
+                            if (!element4.hasClass('active')) {
+                                navLinks.removeClass('active');
+                                id = element4.attr('id');
+                                $('nav ul li a[href*="' + id + '"]').addClass('active');
+                            }
+                        }
+                    }
+                    if ( scrollPos > begin5){
+                        if ( scrollPos < end5 ){
+                            if (!element5.hasClass('active')) {
+                                navLinks.removeClass('active');
+                                id = element5.attr('id');
+                                $('nav ul li a[href*="' + id + '"]').addClass('active');
+                            }
+                        }
+                    }
+                }
+            }
+            lastScrollTop = st;
+        });
+
+
+        $("a.scrollto").click(function () {
+            elementClick = $(this).attr("href");
+            destination = $(elementClick).offset().top;
+            if ($(window).width() < 769){
+                destination = $(elementClick).offset().top - 57;
+            }
+            jQuery("html:not(:animated),body:not(:animated)").animate({scrollTop: destination}, 1100);
+            return false;
+        });
+
     }
 
 
