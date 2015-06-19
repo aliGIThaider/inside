@@ -94,7 +94,7 @@ html[xmlns] .slides {display: block;}
     background-position: -46px -46px;
 }
 .flex-direction-nav .flex-next:active {
-    background-position: -46px -46px;
+    background-position: -46px -92px;
 }
 
 .flex-direction-nav .flex-disabled {
@@ -125,7 +125,28 @@ html[xmlns] .slides {display: block;}
 .flex-control-thumbs img:hover {opacity: 1;}
 .flex-control-thumbs .flex-active {opacity: 1; cursor: default;}
 
-@media screen and (max-width: 860px) {
-  .flex-direction-nav .flex-prev { opacity: 1; left: 10px;}
-  .flex-direction-nav .flex-next { opacity: 1; right: 10px;}
+@media (max-width: 960px) {
+    .flex-direction-nav a {
+        background: url(../img/slider-nav.png);
+    }
+    .flex-direction-nav .flex-prev {
+        left: 8px;
+    }
+    .flex-direction-nav .flex-next {
+        left: 72px;
+        text-align: right;
+        background-position: -46px 0;
+    }
+    .flex-direction-nav .flex-prev:hover {
+        background-position: 0 -46px;
+    }
+    .flex-direction-nav .flex-prev:active {
+        background-position: 0 -46px;
+    }
+    .flex-direction-nav .flex-next:hover {
+        background-position: -46px -46px;
+    }
+    .flex-direction-nav .flex-next:active {
+        background-position: -46px -46px;
+    }
 }

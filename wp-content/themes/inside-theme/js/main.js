@@ -39,7 +39,6 @@ app.plugins = (function ($) {
                 textRight.removeClass('slide2');
                 textRight.removeClass('slide3');
                 var num = $('.flex-active-slide').index();
-                console.log(num);
                 if (num == 2){
                     textRight.addClass('slide2');
                 }
@@ -75,11 +74,13 @@ app.events = (function ($) {
 
     function setEqualHeight(elem) {
         /* set equal height of elements. detect highest element and set this height to other elements */
+        var block = elem;
+        var maxHeight;
+
         $(window).load(function() {
             if ($(window).width() > 640){
-                var block = elem;
                 if (block.length>0){
-                    var maxHeight = 0;
+                    maxHeight = 0;
                     block.each(function () {
                         if ($(this).outerHeight()>maxHeight){
                             maxHeight = $(this).outerHeight();
@@ -91,56 +92,82 @@ app.events = (function ($) {
         });
         $(window).resize(function () {
             if ($(window).width() > 640){
-                var block = elem;
                 if (block.length>0){
-                    var maxHeight = 0;
+                    maxHeight = 0;
                     block.each(function () {
                         if ($(this).outerHeight()>maxHeight){
                             block.removeAttr('style');
                             maxHeight = $(this).outerHeight();
-                            console.log(maxHeight);
                         }
                     });
                     block.css('height', maxHeight);
                 }
+            } else {
+                block.removeAttr('style');
             }
         })
     }
     function konzept() {
         var conceptBlock = $('.concept-block'),
-            maxHeight;
+            concBlockHeight;
         $(window).load(function() {
             function setHeightAndLines() {
-                        maxHeight = 0;
-                        conceptBlock.removeAttr('style');
-                    if (conceptBlock.length>0){
-                        conceptBlock.each(function () {
-                            if ($(this).outerHeight()>maxHeight){
-                                maxHeight = $(this).outerHeight();
-                            }
-                        });
-                        conceptBlock.css('height', maxHeight);
-                    }
-                    if ($(window).width() < 769 ){
-                        var concBlockHeight = maxHeight;
-                        $('.concept-block:nth-child(4) .line').css('top', (concBlockHeight + 55) + 'px');
-                        $('.concept-block:nth-child(5) .line').css('top', (concBlockHeight + 75) + 'px');
-                    } else {
-                        $('.concept-block:nth-child(4) .line').css('top', '60px');
-                        $('.concept-block:nth-child(5) .line').css('top', '80px');
-                    }
-                    if ($(window).width() < 641 ){
-                        var concBlockHeight = maxHeight;
-                        $('.concept-block:nth-child(4) .line').css('top', (concBlockHeight + 55) + 'px');
-                        $('.concept-block:nth-child(5) .line').css('top', (concBlockHeight + 75) + 'px');
-                    }
+                var maxHeight = 0;
+                    conceptBlock.removeAttr('style');
+
+                if (conceptBlock.length>0) {
+                    conceptBlock.each(function () {
+                        if ($(this).height()>maxHeight){
+                            maxHeight = $(this).height();
+                        }
+                    });
+                    conceptBlock.css('height', maxHeight);
+                }
+                if ($(window).width() < 769 ){
+                    concBlockHeight = maxHeight;
+                    $('.concept-block:nth-child(4) .line').css('top', (concBlockHeight + 55) + 'px');
+                    $('.concept-block:nth-child(5) .line').css('top', (concBlockHeight + 75) + 'px');
+                } else {
+                    $('.concept-block:nth-child(4) .line').css('top', '60px');
+                    $('.concept-block:nth-child(5) .line').css('top', '80px');
+                }
+
             }
             setHeightAndLines();
-            $(window).resize(function () {
-                window.setTimeout(function() {
-                    setHeightAndLines();
-                }, 200);
+
+            var windowWidth = $(window).width();
+
+            $(window).resize(function(){
+                if ($(window).width() != windowWidth) {
+                    windowWidth = $(window).width();
+                    setTimeout(function() {
+                        var conceptBlock = $('.concept-block');
+                        conceptBlock.css('height', 0);
+                        var maxHeight = 0;
+                        conceptBlock.removeAttr('style');
+
+                        $.each(conceptBlock, function () {
+                            if ($(this).height()>maxHeight){
+                                maxHeight = $(this).height();
+                            }
+                        });
+
+
+                        console.log(maxHeight);
+                        conceptBlock.css('height', maxHeight);
+
+                        if ($(window).width() < 769 ){
+                            concBlockHeight = maxHeight;
+                            $('.concept-block:nth-child(4) .line').css('top', (concBlockHeight + 55) + 'px');
+                            $('.concept-block:nth-child(5) .line').css('top', (concBlockHeight + 75) + 'px');
+                        } else {
+                            $('.concept-block:nth-child(4) .line').css('top', '60px');
+                            $('.concept-block:nth-child(5) .line').css('top', '80px');
+                        }
+                    }, 200);
+                }
             });
+
         });
 
 

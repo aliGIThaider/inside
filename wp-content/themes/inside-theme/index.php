@@ -174,7 +174,7 @@
 					<img src="<?php echo get_template_directory_uri(); ?>/img/puzzle-hover.png" alt="" class="puzzle hover"/>
 				</div>
 			</div>
-			<div class="concept-blocks-wrap clearfix animated">
+			<div class="concept-blocks-wrap clearfix">
 				<?php $conceptBlock = new WP_query(array('post_type' => 'concept', 'posts_per_page' => 5, 'order' => 'ASC')); ?>
 				<?php if ( $conceptBlock -> have_posts() ) : while ($conceptBlock ->  have_posts() ) : $conceptBlock -> the_post(); ?>
 					<div class="concept-block">
